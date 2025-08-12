@@ -128,7 +128,7 @@ build/
 # If using npm, keep package-lock.json and ignore the others
 # If using yarn, keep yarn.lock and ignore the others  
 # If using bun, keep bun.lockb and ignore the others
-package-lock.json
+# package-lock.json
 yarn.lock
 # bun.lockb
 
@@ -153,4 +153,12 @@ $RECYCLE.BIN/
 tmp/
 temp/
 # Tourism images (kept local for development)
-src/assets/images/
+frontend/src/assets/images/
+
+# Backend specific
+backend/dist/
+backend/.env
+backend/.env.local
+backend/.env.production
+backend/uploads/
+backend/logs/

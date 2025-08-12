@@ -50,7 +50,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 4000); // Change every 5 seconds
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
@@ -65,7 +65,7 @@ const HeroSection = () => {
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-[2000ms] ease-[cubic-bezier(0.25,0.46,0.45,0.96)] ${
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat ${
               index === currentImageIndex
                 ? 'opacity-100 scale-100'
                 : 'opacity-0 scale-105'
@@ -73,6 +73,8 @@ const HeroSection = () => {
             style={{
               backgroundImage: `url(${image})`,
               transitionProperty: 'opacity, transform',
+              transitionDuration: '1200ms',
+              transitionTimingFunction: 'ease-out',
             }}
           />
         ))}
