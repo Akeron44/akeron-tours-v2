@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  createdAt DateTime @default(now()) @map("created_at")
+  status    Status   @default(NEW)
+
+  @@map("contacts")
+}
+
+model TourInquiry {
+  id              Int       @id @default(autoincrement())
+  tourId          Int       @map("tour_id")
+  tourName        String    @map("tour_name")
+  name            String
+  email           String
+  phone           String?
+  message         String?
+  preferredDate   DateTime? @map("preferred_date")
+  numberOfPeople  Int       @default(1) @map("number_of_people")
+  inquiryType     String    @default("booking") @map("inquiry_type") // "booking", "custom", "info"
+  language        String    @default("en")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  status          String    @default("new") // "new", "read", "replied"
+
+  @@map("tour_inquiries")
+}
+
+enum Status {
+  NEW
+  READ
+  REPLIED
+}

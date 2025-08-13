@@ -10,7 +10,3 @@ export const corsMiddleware = (
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   next();
 };
-
-export const handlePreflight = (req: Request, res: Response) => {
-  res.sendStatus(200);
-};

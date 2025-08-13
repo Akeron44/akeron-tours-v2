@@ -1,6 +1,9 @@
 import express from 'express';
-import { corsMiddleware, handlePreflight } from './middleware/cors';
+import { corsMiddleware } from './middleware/cors';
+import { PrismaClient } from '@prisma/client';
 import routes from './routes';
+
+const prisma = new PrismaClient();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -40,6 +43,23 @@ app.use(
     });
   }
 );
+
+// Graceful shutdown - Handle process termination
+process.on('beforeExit', async () => {
+  await prisma.$disconnect();
+});
+
+process.on('SIGINT', async () => {
+  console.log('Received SIGINT, shutting down gracefully...');
+  await prisma.$disconnect();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  console.log('Received SIGTERM, shutting down gracefully...');
+  await prisma.$disconnect();
+  process.exit(0);
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

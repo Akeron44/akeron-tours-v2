@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
+import { ApiCalls } from '@/lib/api';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ export default function ContactForm() {
 
   const { t } = useLanguage();
   const { toast } = useToast();
+
+  const apiCalls = new ApiCalls();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,26 +32,20 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
 
-    const response = await fetch('http://localhost:3001/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to send message');
+    try {
+      await apiCalls.saveContact(formData);
+      toast({
+        title: t('messageSent'),
+        description: t('messageThankYou'),
+      });
+    } catch (error) {
+      console.error('Error saving contact:', error);
+      toast({
+        title: t('errorSavingContact'),
+        description: t('errorSavingContactDescription'),
+      });
     }
-    const data = await response.json();
-    console.log('Response:', data);
-
-    toast({
-      title: t('messageSent'),
-      description: t('messageThankYou'),
-    });
 
     // Reset form
     setFormData({
