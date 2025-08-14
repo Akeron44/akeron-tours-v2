@@ -1,4 +1,4 @@
-import dea from '@/assets/images/dea.jpg';
+// import dea from '@/assets/images/dea.jpg';
 
 export const tours = {
   '1': {
@@ -8,7 +8,8 @@ export const tours = {
       'Discover pristine beaches, crystal-clear waters, and charming coastal villages along the stunning Albanian Riviera.',
     longDescription:
       'Embark on an 8-day journey through Albania’s rich past and vibrant present. From ancient ruins and UNESCO World Heritage cities to sparkling coastlines and traditional villages, this tour offers a perfect blend of history, culture, and natural beauty. Discover a land of contrasts and stories waiting to be told.',
-    image: dea,
+    image:
+      'https://images.unsplash.com/photo-1652126631890-8fafa5c16a98?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Historical & Nature',
     duration: '8 Days',
     groupSize: '8-12 people',

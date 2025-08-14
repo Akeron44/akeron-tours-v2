@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import berat from '@/assets/images/berat.jpg';
-import gjirokaster from '@/assets/images/gjirokaster.jpg';
-import boville from '@/assets/images/boville.jpg';
-import sheshi from '@/assets/images/sheshi.jpg';
-import dea from '@/assets/images/dea.jpg';
-import theth from '@/assets/images/theth.jpg';
+// import berat from '@/assets/images/berat.jpg';
+// import gjirokaster from '@/assets/images/gjirokaster.jpg';
+// import boville from '@/assets/images/boville.jpg';
+// import sheshi from '@/assets/images/sheshi.jpg';
+// import dea from '@/assets/images/dea.jpg';
+// import theth from '@/assets/images/theth.jpg';
 
 const ToursSection = () => {
   const { t } = useLanguage();
@@ -18,7 +18,8 @@ const ToursSection = () => {
       id: 1,
       titleKey: 'Timeless Albania – North to South Discovery',
       descriptionKey: 'albanianRivieraDesc',
-      image: dea,
+      image:
+        'https://images.unsplash.com/photo-1652126631890-8fafa5c16a98?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       category: 'Historical & Nature',
       duration: '7 Days',
     },
@@ -26,7 +27,8 @@ const ToursSection = () => {
       id: 2,
       titleKey: 'Accursed Mountains Adventure',
       descriptionKey: 'accursedMountainsDesc',
-      image: boville,
+      image:
+        'https://images.unsplash.com/photo-1705405999485-188af37e0462?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       category: 'Nature',
       duration: '5 Days',
     },
@@ -34,7 +36,9 @@ const ToursSection = () => {
       id: 3,
       titleKey: 'Berat Historical Heritage',
       descriptionKey: 'beratDesc',
-      image: berat,
+      image:
+        'https://images.unsplash.com/photo-1630339858071-4e64cc76fb6c?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
       category: 'Historical',
       duration: '2 Days',
     },
@@ -42,7 +46,9 @@ const ToursSection = () => {
       id: 4,
       titleKey: 'Gjirokastër Stone City',
       descriptionKey: 'gjirokastraDesc',
-      image: gjirokaster,
+      image:
+        'https://images.unsplash.com/photo-1648046143698-1204e59eb43b?q=80&w=1764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
       category: 'Cultural',
       duration: '2 Days',
     },
@@ -50,7 +56,9 @@ const ToursSection = () => {
       id: 5,
       titleKey: 'Theth National Park Trek',
       descriptionKey: 'thethDesc',
-      image: theth,
+      image:
+        'https://images.unsplash.com/photo-1586674572976-68d3c69d3a7f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
       category: 'Nature',
       duration: '4 Days',
     },
@@ -58,7 +66,9 @@ const ToursSection = () => {
       id: 6,
       titleKey: 'Tirana Cultural Experience',
       descriptionKey: 'tiranaDesc',
-      image: sheshi,
+      image:
+        'https://images.unsplash.com/photo-1738675326308-f4097c3405a7?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
       category: 'Cultural',
       duration: '1 Day',
     },
