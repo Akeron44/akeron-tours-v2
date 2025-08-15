@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
 import { ContactFormData, ApiResponse } from '../types';
 import { PrismaClient } from '@prisma/client';
+import { EmailService } from '../services/emailService';
 
 const prisma = new PrismaClient();
+const emailService = new EmailService();
 
 export const submitContactForm = async (req: Request, res: Response) => {
   const { name, email, phone, message }: ContactFormData = req.body;
@@ -22,6 +24,22 @@ export const submitContactForm = async (req: Request, res: Response) => {
       message,
     },
   });
+
+  try {
+    // Send confirmation email to user
+    await emailService.sendUserConfirmation({ name, email, phone, message });
+
+    // Send notification email to admin
+    await emailService.sendAdminNotification({ name, email, phone, message });
+
+    console.log(
+      `📧 Emails sent for contact form submission from ${name} (${email})`
+    );
+  } catch (emailError) {
+    console.error('Error sending emails:', emailError);
+    // Continue execution even if emails fail - we don't want to fail the API call
+  }
+
   // Log the contact form data
   console.log(`📧 New contact form submission from ${name} (${email})`);
   console.log('---');

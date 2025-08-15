@@ -35,13 +35,20 @@ model TourInquiry {
   message         String?
   preferredDate   DateTime? @map("preferred_date")
   numberOfPeople  Int       @default(1) @map("number_of_people")
-  inquiryType     String    @default("booking") @map("inquiry_type") // "booking", "custom", "info"
+  inquiryType     InquiryType @default(BOOKING) @map("inquiry_type") // "booking", "custom", "info"
   language        String    @default("en")
   createdAt       DateTime  @default(now()) @map("created_at")
-  status          String    @default("new") // "new", "read", "replied"
+  status          Status    @default(NEW) // "new", "read", "replied"
 
   @@map("tour_inquiries")
 }
+
+enum InquiryType {
+  BOOKING
+  CUSTOM 
+  INFO
+}
+
 
 enum Status {
   NEW
